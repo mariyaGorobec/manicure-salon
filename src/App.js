@@ -22,14 +22,17 @@ function App() {
           ></img>
           <h3>лучшие ноготочки в твоём городе!</h3>
           <h1> ПО РУКАМ</h1>
-          <div className={style.quote}> 
-          <span className={style.quoteAboutManicure}>«Всё в ваших руках. Поэтому они должны быть в полном порядке» — Coco Chanel</span>
-          <span className={style.location}>г.Иркутск, ул.Байкальская, д.2, тел. +7(999)-999-99-99</span>
+          <div className={style.quote}>
+            <span className={style.quoteAboutManicure}>
+              «Всё в ваших руках. Поэтому они должны быть в полном порядке» —
+              Coco Chanel
+            </span>
+            <span className={style.location}>
+              г.Иркутск, ул.Байкальская, д.2, тел. +7(999)-999-99-99
+            </span>
+          </div>
         </div>
-        </div>
-        
       </div>
-    
     </div>
   );
 }
