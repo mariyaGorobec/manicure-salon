@@ -9,17 +9,28 @@ function App() {
 
   return (
     <div className={style.conteiner}>
+      <img className={style.arms} width={400} height={350} src="/img/arms.png"></img>
+      
       <div class={style.grid}>
         {arr.map((item) => (
           <div></div>
         ))}
         <div className={style.item}>
+          <div className={style.imagesForDesign}>
+          
+         
           <img
-            height={350}
-            width={500}
+            height={300}
+            width={450}
             className={style.imgSalon}
             src="/img/imgSalon.png"
           ></img>
+           <img className={style.circle} height={300} width={300} src="/img/circle.png"></img>
+           
+          <img className={style.butterfly} height={150} width={200} src="/img/butterfly.png"></img>
+          <img className={style.heart} src = '/img/heart.png' width={160} height={150}></img>
+          <img className={style.mobilePhone} width={70} height={120} src="/img/mobilePhone.png"></img>
+          </div>
           <h3>лучшие ноготочки в твоём городе!</h3>
           <h1> ПО РУКАМ</h1>
           <div className={style.quote}>
@@ -33,6 +44,7 @@ function App() {
           </div>
         </div>
       </div>
+      <img className={style.bear} width={250} height={250} src="/img/bear.png"></img>
     </div>
   );
 }
