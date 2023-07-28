@@ -1,32 +1,10 @@
+import Menu from "../../components/Menu/Menu";
 import style from "./Home.module.scss";
-import { Link } from "react-router-dom";
 
 function Home() {
-  document.body.style.backgroundImage="linear-gradient(#f0e8c2, #fe8bf1)";
- 
+  document.body.style.backgroundImage = "linear-gradient(#f0e8c2, #fe8bf1)";
+
   let arr = [];
-  let menuItem = [
-    {
-      describe: "Кто мы?",
-      link: "/aboutUs",
-      className: "aboutUs"
-    },
-    {
-      describe: "Сколько стоит?",
-      link: "/price",
-      className: "price"
-    },
-    {
-      describe: "Фоточки наших работ",
-      link: "/photos",
-      className: "photos"
-    },
-    {
-      describe: "А свободные окошки есть?",
-      link: "/enroll",
-     className:"enroll"
-    },
-  ];
   for (let i = 0; i < 100; i++) {
     arr.push(1);
   }
@@ -105,25 +83,9 @@ function Home() {
           height={250}
           src="/img/bear.png"
         ></img>
-        <div className={style.menu}>
-          <ul>
-            {menuItem.map((item) => (
-              <li className={item.className}>
-                <Link to={item.link}>
-                  <img
-                    src="/img/star.png"
-                    alt="star"
-                    width={50}
-                    height={50}
-                  ></img>
-                  <span>{item.describe}</span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <Menu></Menu>
       </div>
-      </>
+    </>
   );
 }
 export default Home;

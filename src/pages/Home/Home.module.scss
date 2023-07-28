@@ -1,18 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
 
 
-
-a {
-  &:active {
-    color: #214464;
-  }
-
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-
-}
-
 img,
 li {
   &:hover {
@@ -163,41 +151,6 @@ li {
     font-style: italic;
     font-size: 14px;
     color: #283b63;
-  }
-}
-
-.menu {
-  margin-right: 100px;
-
-  li {
-    text-align: center;
-    transition: background-color 0.1s ease-in-out;
-
-    &:hover {
-      background: lighten($color: #a45ce4, $amount: 5%);
-    }
-
-    &:active {
-      background: darken($color: #a45ce4, $amount: 5%);
-    }
-
-    color: #283b63;
-    font-weight: 280;
-    border-radius: 20px;
-    margin-bottom: 10px;
-    background: linear-gradient(to left, #f2dcc9, #f4a0dd, #bd97e3) no-repeat;
-
-    img {
-      margin-right: 20px;
-      margin-bottom: 10px;
-      margin-top: 10px;
-      margin-left: 20px;
-    }
-
-
-    cursor: pointer;
-    list-style-type: none;
-    width: 350px;
   }
 }
 
