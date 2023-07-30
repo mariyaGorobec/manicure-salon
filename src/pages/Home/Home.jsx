@@ -1,9 +1,15 @@
 import Menu from "../../components/Menu/Menu";
 import style from "./Home.module.scss";
+import { useDispatch } from "react-redux";
+import { home } from "../../store/bodyColor/bodyColorSlice";
 
 function Home() {
-  document.body.style.backgroundImage = "linear-gradient(#f0e8c2, #fe8bf1)";
-
+  const dispatch = useDispatch();
+  
+  (()=>{
+    dispatch(home());
+  })();
+  
   let arr = [];
   for (let i = 0; i < 100; i++) {
     arr.push(1);
