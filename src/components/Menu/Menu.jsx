@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { aboutUs } from "../../store/bodyColor/bodyColorSlice";
+import { aboutUs, enroll, photos, price } from "../../store/bodyColor/bodyColorSlice";
 import styles from "./Menu.module.scss";
 
 
@@ -10,33 +10,29 @@ function Menu() {
     {
       describe: "Кто мы?",
       link: "/aboutUs",
-      className: "aboutUs",
       reducer: aboutUs(),
     },
     {
       describe: "Сколько стоит?",
       link: "/price",
-      className: "price",
-      reducer: aboutUs(),
+      reducer: price(),
     },
     {
       describe: "Фоточки наших работ",
       link: "/photos",
-      className: "photos",
-      reducer: aboutUs(),
+      reducer: photos(),
     },
     {
       describe: "А свободные окошки есть?",
       link: "/enroll",
-      className: "enroll",
-      reducer: aboutUs(),
+      reducer: enroll(),
     },
   ];
   return (
     <div className={styles.menu}>
       <ul>
         {menuItem.map((item) => (
-          <li onClick={()=>dispatch(item.reducer)} className={item.className}>
+          <li onClick={()=>dispatch(item.reducer)}>
             <Link to={item.link}>
               <img src="/img/star.png" alt="star" width={50} height={50}></img>
               <span>{item.describe}</span>
