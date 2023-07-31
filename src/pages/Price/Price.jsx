@@ -1,5 +1,13 @@
-const Price = () =>{
-    return(<h1>Здоровка!</h1>);
-}
+import { useDispatch } from "react-redux";
+import { price } from "../../store/bodyColorAndMenu/bodyColorAndMenuSlice";
 
-export default Price; 
+const Price = () => {
+  const dispatch = useDispatch();
+
+  (() => {
+    dispatch(price());
+  })();
+  return <h1>Здоровка!</h1>;
+};
+
+export default Price;

@@ -1,12 +1,10 @@
-import { combineReducers, configureStore } from "@reduxjs/toolkit"
-import bodyColorSlice from "./bodyColor/bodyColorSlice"
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import bodyColorAndMenuSlice from "./bodyColorAndMenu/bodyColorAndMenuSlice";
 
 const rootReducer = combineReducers({
-   bodyColor: bodyColorSlice,
-})
+  bodyColorAndMenu: bodyColorAndMenuSlice,
+});
 
 export const store = configureStore({
-   reducer: rootReducer
-})
-
-
+  reducer: rootReducer,
+});
