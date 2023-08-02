@@ -1,5 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
 
+.conteiner {
+
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+
+}
 
 img,
 li {
@@ -28,10 +38,10 @@ li {
   outline: none;
 }
 
-.grid {
+.overlay {
   display: flex;
   position: relative;
-  display: grid;
+  z-index: 2;
 
   h3 {
     font-style: italic;
@@ -43,10 +53,11 @@ li {
   }
 
   h1 {
+    z-index: 5;
     margin: 0;
     margin-top: 15px;
-    margin-bottom: 80px;
-    font-size: xx-large;
+    margin-bottom: 100px;
+    font-size: 50px;
     padding: 0;
     font-style: bold;
     font-weight: 1200;
@@ -54,15 +65,10 @@ li {
     text-shadow: 2px 4px #214464;
   }
 
-  grid-template-columns: repeat(10, 65px);
-  grid-template-rows: repeat(10, 65px);
+
 }
 
-.grid>* {
-  z-index: 2;
-  border: 1px solid #fad3da;
-  margin: 0;
-}
+
 
 .imagesForDesign {
 
@@ -123,12 +129,13 @@ li {
 }
 
 .quote {
+  z-index: 5;
   display: flex;
   width: 600px;
   height: 95px;
-  justify-self: flex-end;
-  border: 1px solid #fad3da;
   position: absolute;
+  border: 1px solid #fad3da;
+  margin-right: 50px;
   bottom: 0;
   background: linear-gradient(#fb9ee7, #fd8fee) no-repeat;
   flex-direction: column;

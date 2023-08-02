@@ -2,21 +2,18 @@ import Menu from "../../components/Menu/Menu";
 import style from "./Home.module.scss";
 import { useDispatch } from "react-redux";
 import { home } from "../../store/bodyColorAndMenu/bodyColorAndMenuSlice";
+import Grid from "../../components/Grid/Grid";
 
 function Home() {
+  const color = "#fad3da";
   const dispatch = useDispatch();
 
   (() => {
     dispatch(home());
   })();
 
-  let arr = [];
-  for (let i = 0; i < 100; i++) {
-    arr.push(1);
-  }
-
   return (
-    <>
+    <div className={style.conteiner}>
       <img
         alt="arms"
         className={style.arms}
@@ -25,10 +22,8 @@ function Home() {
         src="/img/arms.png"
       ></img>
 
-      <div class={style.grid}>
-        {arr.map((item) => (
-          <div></div>
-        ))}
+      <div class={style.overlay}>
+        <Grid color={color}></Grid>
         <div className={style.item}>
           <div className={style.imagesForDesign}>
             <img
@@ -89,9 +84,9 @@ function Home() {
           height={250}
           src="/img/bear.png"
         ></img>
-        <Menu></Menu>
+        <Menu color={color}></Menu>
       </div>
-    </>
+    </div>
   );
 }
 export default Home;

@@ -1,0 +1,56 @@
+.girls {
+    display: flex;
+    flex-direction: column;
+}
+
+img {
+    padding: 10px;
+}
+
+.aboutTheEmployee,
+.aboutTheEmployeeSecondCard {
+    .describe {
+
+        color: #283b63;
+        font-weight: 280;
+
+    }
+
+    .name {
+        font-style: italic;
+
+        color: #283b63;
+    }
+
+    span {
+        font-size: 17px;
+        font-weight: 600;
+        padding: 5px;
+        margin-left: 5px;
+    }
+
+    width: 600px;
+    height: 95px;
+    border: 1px solid #fdf9ff;
+    background: linear-gradient(to left, #92daf0, #fc99f1, #d1bded) no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+}
+
+.girlCard {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.lips {
+    position: absolute;
+    margin-left: 90%;
+    margin-top: 26%;
+}
+
+.aboutTheEmployeeSecondCard {
+    margin-left: 10px;
+}

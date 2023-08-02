@@ -1,0 +1,85 @@
+.conteiner {
+    display: flex;
+    align-items: center;
+    width: 100vh;
+}
+
+.girls {
+    z-index: 5;
+    position: absolute;
+
+}
+
+.grids {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 50px;
+    justify-self: center;
+    align-self: center;
+    z-index: -5;
+    padding: 10px;
+    position: relative;
+
+    img {
+
+
+        position: absolute;
+        z-index: 5;
+
+    }
+
+    .cat {
+        margin-top: 39%;
+    }
+
+    .emerald {
+        margin-bottom: 39%;
+        margin-left: 50%;
+    }
+}
+
+.girlsAndGrid {
+
+    height: 100vh;
+    display: flex;
+    position: relative;
+}
+
+.menuAndDescribtion {
+    margin-left: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    img {
+        z-index: 2;
+        align-self: end;
+        margin-bottom: 30px;
+    }
+
+    .aboutCompany {
+        top: 0;
+        z-index: 5;
+        position: relative;
+        color: #fbfffd;
+        -webkit-text-stroke: 1px #283c63;
+        text-shadow: 2px 2px #214464;
+        font-weight: 900;
+
+        margin-right: 20px;
+        font-size: 30px;
+        height: 300px;
+        width: 550px;
+    }
+
+    position: relative;
+
+}
+
+.menu {
+    position: absolute;
+    z-index: 5;
+    margin-top: 65%;
+
+}

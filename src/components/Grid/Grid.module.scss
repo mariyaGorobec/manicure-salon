@@ -1,0 +1,12 @@
+.grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(10, 65px);
+    grid-template-rows: repeat(10, 65px);
+}
+
+.grid>* {
+    z-index: 2;
+    border: 1px solid;
+    margin: 0;
+}
