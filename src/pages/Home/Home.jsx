@@ -84,7 +84,7 @@ function Home() {
           height={250}
           src="/img/bear.png"
         ></img>
-        <Menu color={color}></Menu>
+        <div style={{marginRight: "100px"}}><Menu color={color}></Menu></div>
       </div>
     </div>
   );

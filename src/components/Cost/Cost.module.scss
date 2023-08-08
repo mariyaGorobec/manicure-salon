@@ -1,0 +1,63 @@
+.priceList {
+    
+    display: flex;
+    align-items: center;
+  
+    flex-direction: column;
+    li {
+        border-radius: 20px;
+        color: #283b63;
+        font-weight: 400;
+      
+        background: linear-gradient(to right, #00bddd, #3494e7, #8d6df3);
+        width: 100%;
+    
+        span {
+            padding: 30px;
+        }
+    
+        margin-bottom: 15px;
+        display: flex;
+        justify-content: space-between;
+        transition: background-color 0.1s ease-in-out;
+    
+        &:hover {
+            background: lighten($color: #045297, $amount: 5%);
+        }
+    }
+
+}
+
+
+
+
+ul {
+    list-style-type: none;
+}
+
+.header {
+    
+    margin-top: 20px;
+    justify-content: space-between;
+    display: flex;
+
+    .btn1 {
+        margin-left: 35px;
+    }
+
+    .btn2 {
+        margin-left: 10px;
+    }
+
+    button {
+        color: #283b63;
+        font-weight: 400;
+        padding: 10px;
+        border-radius: 20px;
+        border: none;
+        cursor: pointer;
+        width: 250px;
+    }
+
+    ;
+}
