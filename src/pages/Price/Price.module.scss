@@ -1,0 +1,26 @@
+.conteiner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.priceList {
+    justify-self: center;
+    width: 100%;
+}
+
+.grids {
+    z-index: -5;
+    position: absolute;
+    margin-right: auto;
+    left: 5%;
+}
+
+.menu {
+    align-self: flex-end;
+    right: 2%;
+    margin-left: auto;
+    position: relative;
+    margin-left: -20%;
+}
