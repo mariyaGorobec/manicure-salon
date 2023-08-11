@@ -1,0 +1,44 @@
+.active {
+    color: #fff;
+    background: #05d3d3 !important;
+}
+
+.topMenu {
+    z-index: 20;
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    position: sticky;
+    top: 0%;
+    background: rgba(2, 215, 211, 0.2);
+    box-shadow: 0 0 5px 5px rgba(2, 215, 211, 0.1);
+    padding: 20px;
+    margin: 0;
+    backdrop-filter: blur(5px);
+    color: #283b63;
+    font-weight: 500;
+    transition: background-color 0.1s ease-in-out;
+
+    li {
+        &:hover {
+            background: #05d3d3 !important;
+            color: #fff;
+        }
+
+        &:active {
+            background: darken($color: #05d3d3, $amount: 5%);
+        }
+    }
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.menu {
+    align-self: flex-end;
+    position: sticky;
+    bottom: 1%;
+    right: 1%;
+}
