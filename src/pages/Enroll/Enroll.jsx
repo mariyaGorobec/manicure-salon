@@ -1,4 +1,7 @@
+import React from "react";
+
 import { useDispatch } from "react-redux";
+import CalendarItem from "../../components/Calendar/CalendarItem";
 import { enroll } from "../../store/bodyColorAndMenu/bodyColorAndMenuSlice";
 
 const Enroll = () => {
@@ -7,7 +10,12 @@ const Enroll = () => {
   (() => {
     dispatch(enroll());
   })();
-  return <h1>Бай!!!</h1>;
+
+  return (
+    <>
+    <CalendarItem></CalendarItem>
+    </>
+  );
 };
 
 export default Enroll;

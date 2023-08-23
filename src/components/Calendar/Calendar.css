@@ -1,0 +1,7 @@
+.react-calendar .highlight {
+  background: greenyellow;
+}
+
+.react-calendar .noHighlight{
+  background: pink;
+}
