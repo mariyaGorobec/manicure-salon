@@ -1,4 +1,5 @@
-.changeMaster{
+.yellow,.changeMaster{
+    
     background: linear-gradient(to right, #04dfb3, #fee588) no-repeat;
     width: 100%;
     padding: 10px;
@@ -8,13 +9,31 @@
     margin-bottom: 10px;
     color: #283b63;
     font-weight: 280;
+    &:hover{
+        background: #02caa2;
+    }
 }
 h3{
     font-style: italic;
-    color: #283b63;
+    color: #fff;
+    -webkit-text-stroke: 0.5px  #283b63;
 }
+
+.red{
+    background:#ea626f ;
+    &:hover{
+        background: #ffe8bb !important;
+    }
+}
+
 .changeTime{
     background: linear-gradient(to right, #f76775, #eeacf4) no-repeat;
+    &:hover{
+        background: #ea626f;
+    }
+}
+.red,.changeTime{
+   
     width: 100%;
     padding: 10px;
     border-radius: 20px;
@@ -23,8 +42,42 @@ h3{
     margin-bottom: 10px;
     color: #283b63;
     font-weight: 280;
+   
 }
 
 li{
     cursor: pointer;
+}
+.yellow{
+    background:#02caa2 ;
+    &:hover{
+        background: #fee588;
+    }
+}
+
+.changeMaster{
+    &:hover{
+        background: #02caa2;
+    }
+    background: linear-gradient(to right, #04dfb3, #fee588) no-repeat;
+}
+
+.goToReservation{
+    font-size: 16px;
+    color: #283b63;
+    font-weight: 400;
+    width: 100%;
+    padding: 10px;
+    border-radius: 20px;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    color: #fff;
+    background: #ea626f;
+    &:hover{
+        background: #f293c6;
+    }
+    &:active{
+        background: #f481be;
+    }
 }
