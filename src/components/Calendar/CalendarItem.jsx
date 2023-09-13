@@ -5,14 +5,94 @@ import "./Calendar.css";
 import React from "react";
 import { format } from "date-fns/esm";
 import style from "./Calendar.module.scss";
-import { useDispatch } from "react-redux";
-import { changeMaster } from "../../store/Calendar/calendarSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchContent, getMasters, getTime, resetData} from "../../store/Calendar/calendarSlice";
 
 function isSameDay(a, b) {
   return differenceInCalendarDays(a, b) === 0;
 }
 
-function CalendarItem({ freeWindows }) {
+const CalendarItem = () => {
+
+  const dispatch = useDispatch();
+
+
+  React.useEffect(() => {
+    dispatch(fetchContent())
+  }, [dispatch]);
+
+  const appointments = useSelector((state) => state.calendar.appointments);
+  const masters = useSelector((state) => state.calendar.masters);
+  const time = useSelector((state)=>state.calendar.time);
+
+  const highlightedDates = appointments.map((item) => new Date(item.time));
+
+  const getArrayOfMasters = (value) => {
+    dispatch(getMasters({ value: value }))
+  };
+
+  const getArrayOfTime = (value)=>{
+    dispatch(getTime({ value:value}))
+  }
+
+  function tileClassName({ date, view }) {
+    if (date > minDate && date <= maxDate) {
+      if (
+        view === "month" &&
+        highlightedDates.find((dDate) => isSameDay(dDate, date))
+      ) {
+        return "highlight";
+      } else {
+        return "noHighlight";
+      }
+    }
+  }
+
+  const minDate = new Date(
+    new Date().getFullYear(),
+    new Date().getMonth(),
+    new Date().getDate()
+  );
+  const maxDate = new Date(
+    new Date().getFullYear(),
+    new Date().getMonth(),
+    new Date().getDate() + 30
+  );
+
+  return (<><Calendar
+    onClickDay={(value) => {
+      dispatch(resetData());
+      getArrayOfMasters(value);
+    }}
+    tileClassName={tileClassName}
+    minDate={minDate}
+    maxDate={maxDate}
+  ></Calendar>
+    {masters ? <>
+      <h3 style={{ textAlign: "center" }}>выберите мастера</h3>
+      <ul style={{ margin: 0, padding: 0 }}>
+        {masters.map((item) => (
+          <li onClick={()=>getArrayOfTime(item)}>
+            {item}
+          </li>
+        ))}
+      </ul>
+    </> : ''}
+    {time? <>
+      <h3 style={{ textAlign: "center" }}>выберите время</h3>
+      <ul style={{ margin: 0, padding: 0 }}>
+        {time.map((item) => (
+          <li>
+            {item}
+          </li>
+        ))}
+      </ul>
+    </>:""}
+  </>
+  );
+}
+
+/*function CalendarItem({ freeWindows }) {
   const [changeColorMaster, setChangeColorMaster] = React.useState(false);
   const [goToReservation, setGoToReservation] = React.useState(false);
   const [changeColorTime, setChangeColorTime] = React.useState(false);
@@ -152,6 +232,6 @@ function CalendarItem({ freeWindows }) {
       </div>
     </div>
   );
-}
+}*/
 
 export default CalendarItem;

@@ -6,7 +6,7 @@ import calendarSlice from "./Calendar/calendarSlice";
 const rootReducer = combineReducers({
   bodyColorAndMenu: bodyColorAndMenuSlice,
   photosNails: photosNailsSlice,
-  calendarSlice: calendarSlice
+  calendar: calendarSlice
   
 });
 
