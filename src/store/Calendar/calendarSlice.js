@@ -6,7 +6,9 @@ const initialState = {
     appointments: [],
     masters: [],
     allAppointmentsInTheDay: [],
-    time: []
+    time: [],
+    selectedMaster: {},
+    selectedTime: {}
 }
 
 
@@ -31,13 +33,21 @@ const calendarSlice = createSlice({
             state.masters = masters;
         },
         getTime: (state, action) => {
-            const time = state.allAppointmentsInTheDay.filter(item => item.master_name === action.payload.value).map(item => format(new Date(item.time), "h:MM"));
+            const time = state.allAppointmentsInTheDay.filter(item => item.master_name === action.payload.value).map(item => format(new Date(item.time), "HH:mm"));
             state.time = time;
         },
         resetData: state => {
+            state.selectedMaster = {};
+            state.selectedTime = {};
             state.masters = [];
             state.allAppointmentsInTheDay = [];
             state.time = []
+        },
+        getSelectedMaster: (state, action) => {
+            state.selectedMaster = action.payload.value;
+        },
+        getSelectedTime: (state,action)=>{
+            state.selectedTime = action.payload.value;
         }
     },
     extraReducers: (builder) => {
@@ -48,4 +58,4 @@ const calendarSlice = createSlice({
 })
 
 export default calendarSlice.reducer;
-export const { getMasters, getTime, resetData} = calendarSlice.actions;
+export const { getMasters, getTime, resetData, getSelectedMaster, getSelectedTime } = calendarSlice.actions;

@@ -3,10 +3,9 @@ import "react-calendar/dist/Calendar.css";
 import { differenceInCalendarDays } from "date-fns";
 import "./Calendar.css";
 import React from "react";
-import { format } from "date-fns/esm";
 import style from "./Calendar.module.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchContent, getMasters, getTime, resetData} from "../../store/Calendar/calendarSlice";
+import { fetchContent, getMasters, getTime, resetData, getSelectedMaster, getSelectedTime } from "../../store/Calendar/calendarSlice";
 
 function isSameDay(a, b) {
   return differenceInCalendarDays(a, b) === 0;
@@ -23,7 +22,9 @@ const CalendarItem = () => {
 
   const appointments = useSelector((state) => state.calendar.appointments);
   const masters = useSelector((state) => state.calendar.masters);
-  const time = useSelector((state)=>state.calendar.time);
+  const time = useSelector((state) => state.calendar.time);
+  const selectedMaster = useSelector((state) => state.calendar.selectedMaster);
+  const selectedTime = useSelector((state) => state.calendar.selectedTime)
 
   const highlightedDates = appointments.map((item) => new Date(item.time));
 
@@ -31,8 +32,8 @@ const CalendarItem = () => {
     dispatch(getMasters({ value: value }))
   };
 
-  const getArrayOfTime = (value)=>{
-    dispatch(getTime({ value:value}))
+  const getArrayOfTime = (value) => {
+    dispatch(getTime({ value: value }))
   }
 
   function tileClassName({ date, view }) {
@@ -59,36 +60,67 @@ const CalendarItem = () => {
     new Date().getDate() + 30
   );
 
-  return (<><Calendar
-    onClickDay={(value) => {
-      dispatch(resetData());
-      getArrayOfMasters(value);
-    }}
-    tileClassName={tileClassName}
-    minDate={minDate}
-    maxDate={maxDate}
-  ></Calendar>
-    {masters ? <>
-      <h3 style={{ textAlign: "center" }}>выберите мастера</h3>
-      <ul style={{ margin: 0, padding: 0 }}>
-        {masters.map((item) => (
-          <li onClick={()=>getArrayOfTime(item)}>
-            {item}
-          </li>
-        ))}
-      </ul>
-    </> : ''}
-    {time? <>
-      <h3 style={{ textAlign: "center" }}>выберите время</h3>
-      <ul style={{ margin: 0, padding: 0 }}>
-        {time.map((item) => (
-          <li>
-            {item}
-          </li>
-        ))}
-      </ul>
-    </>:""}
-  </>
+  return (<div style={{
+    display: "flex",
+    justifyContent: "space-around",
+    alignItems: "flex-start",
+    marginLeft: "5%",
+  }}>
+    <div style={{ display: "flex", flexDirection: "column", width: "40%" }}>
+      <h3 style={{ textAlign: "center" }}>
+        выберите свободную дату, нажав на зелёную ячейку
+      </h3>
+      <div>
+        <Calendar
+          onClickDay={(value) => {
+            dispatch(resetData());
+            getArrayOfMasters(value);
+          }}
+          tileClassName={tileClassName}
+          minDate={minDate}
+          maxDate={maxDate}
+        ></Calendar>
+      </div>
+    </div>
+    <div style={{ width: "20%" }}>
+      {masters.length > 0 ? <>
+        <h3 style={{ textAlign: "center" }}>выберите мастера</h3>
+        <ul style={{ margin: 0, padding: 0 }}>
+          {masters.map((item) => (
+            <li
+              className={
+                selectedMaster === item
+                  ? style["changeMaster"] && style["yellow"]
+                  : style["changeMaster"]
+              }
+              onClick={() => {
+                getArrayOfTime(item);
+                dispatch(getSelectedMaster({ value: item }))
+              }}>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </> : ''}
+    </div>
+    <div style={{ width: "20%", textAlign: "center" }}>
+      {time.length > 0 ? <>
+        <h3 style={{ textAlign: "center" }}>выберите время</h3>
+        <ul style={{ margin: 0, padding: 0 }}>
+          {time.map((item) => (
+            <li
+              className={
+                selectedTime === item
+                  ? style["changeTime"] && style["red"]
+                  : style["changeTime"]}
+              onClick={() => dispatch(getSelectedTime({ value: item }))}>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </> : ""}
+    </div>
+  </div>
   );
 }
 
