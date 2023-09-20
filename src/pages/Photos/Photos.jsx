@@ -41,7 +41,7 @@ const Photos = () => {
               width: "250px",
               padding: "15px",
               borderRadius: "20px",
-              background: "linear-gradient(to left, #01d8d2,#4093e9,#876ff2)",
+              background: "linear-gradient(to right, #de6fca,#a957f1)",
               textAlign: "center",
             }}
           >
@@ -49,7 +49,7 @@ const Photos = () => {
           </li>
         ))}
       </ul>
-      <div style={{ display: "flex" }}>
+      <div style={{ display: "flex"}}>
         <div className={style.cards}>
           {photosItem.map((item) => (
             <NailsCard

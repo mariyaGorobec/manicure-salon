@@ -62,16 +62,21 @@ const CalendarItem = () => {
   );
 
   return (<div style={{
+    backdropFilter: "blur(5px)",
+    borderRadius: "20px",
+    background: "rgba(139, 110, 243, 0.4)",
     display: "flex",
+    marginRight: "5%",
+    marginTop:"2%",
     justifyContent: "space-around",
     alignItems: "flex-start",
     marginLeft: "5%",
   }}>
     <div style={{ display: "flex", flexDirection: "column", width: "40%" }}>
-      <h3 style={{ textAlign: "center" }}>
-        выберите свободную дату, нажав на зелёную ячейку
+      <h3 style={{ }}>
+        ВЫБЕРИТЕ МАСТЕРА, НАЖАВ НА СВОБОДНУЮ ДАТУ В КАЛЕНДАРЕ
       </h3>
-      <div>
+      <div style={{padding:"20px"}}>
         <Calendar
           onClickDay={(value) => {
             dispatch(resetData());
@@ -85,7 +90,7 @@ const CalendarItem = () => {
     </div>
     <div style={{ width: "20%" }}>
       {masters.length > 0 ? <>
-        <h3 style={{ textAlign: "center" }}>выберите мастера</h3>
+        <h3 style={{ textAlign: "center" }}>ВЫБЕРИТЕ МАСТЕРА</h3>
         <ul style={{ margin: 0, padding: 0 }}>
           {masters.map((item) => (
             <li
@@ -106,7 +111,7 @@ const CalendarItem = () => {
     </div>
     <div style={{ width: "20%", textAlign: "center" }}>
       {time.length > 0 ? <>
-        <h3 style={{ textAlign: "center" }}>выберите время</h3>
+        <h3 style={{ textAlign: "center" }}>ВЫБЕРИТЕ ВРЕМЯ</h3>
         <ul style={{ margin: 0, padding: 0 }}>
           {time.map((item) => (
             <li

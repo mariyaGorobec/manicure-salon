@@ -1,6 +1,7 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import { updateField, reservation } from "../../store/formSlice/formSlice";
+import style from './ReservationFrom.module.scss'
 
 const ReservationForm = () => {
 
@@ -20,27 +21,29 @@ const ReservationForm = () => {
         initialValues={form}>
         {({ isSubmitting }) => (
             <Form>
-                <div>
+                <div style={{display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center', height: "100%"}}>
+                    <h3>Заполните данные для записи на процедуру</h3>
+                <div className={style.field}>
                     <lablel htmlFor='name'>Ваше ФИО:</lablel>
                     <Field type="text" id='name' name="name" onChange={handleChange('name')} value={form.name}></Field>
                     <ErrorMessage name='name' component='div'></ErrorMessage>
                 </div>
-                <div>
+                <div className={style.field}>
                     <lablel htmlFor='phone'>Ваш телефон:</lablel>
                     <Field type="phone" id='phone' name="phone" onChange={handleChange('phone')} value={form.phone}></Field>
                     <ErrorMessage name='phone' component='div'></ErrorMessage>
                 </div>
-                <div>
+                <div className={style.field}> 
                     <lablel htmlFor='master_name'>Ваш мастер:</lablel>
                     <Field type="text" id='master_name' name="master_name" value={master_name}></Field>
                     <ErrorMessage name='master_name' component='div'></ErrorMessage>
                 </div>
-                <div>
+                <div className={style.field}>
                     <lablel htmlFor='date'>Дата записи:</lablel>
                     <Field type="text" id='date' name="date" value={day}></Field>
                     <ErrorMessage name='date' component='div'></ErrorMessage>
                 </div>
-                <div>
+                <div className={style.field}>
                     <lablel htmlFor='time'>Время записи:</lablel>
                     <Field type="time" id='time' name="time" value={time}></Field>
                     <ErrorMessage name='time' component='div'></ErrorMessage>
@@ -55,6 +58,7 @@ const ReservationForm = () => {
                 }))} type="submit" disabled={isSubmitting}>
                     Записаться
                 </button>
+                </div>
             </Form>
         )}
     </Formik>);

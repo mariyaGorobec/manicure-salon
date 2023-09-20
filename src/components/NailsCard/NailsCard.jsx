@@ -6,6 +6,7 @@ const NailsCard = ({ name, src, alt }) => {
       <img src={src} alt={alt} width={300} height={350} />
       <span
         style={{
+          borderBottom: "1px solid #283b63",
           color: "#283b63",
           fontWeight: "320",
           width: "200px",
