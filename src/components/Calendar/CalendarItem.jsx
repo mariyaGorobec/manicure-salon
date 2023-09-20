@@ -5,7 +5,7 @@ import "./Calendar.css";
 import React from "react";
 import style from "./Calendar.module.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchContent, getMasters, getTime, resetData, getSelectedMaster, getSelectedTime } from "../../store/Calendar/calendarSlice";
+import { fetchContent, getMasters, getTime, resetData, getSelectedMaster, getSelectedTime, buttonResrvation, onClickToReservation } from "../../store/Calendar/calendarSlice";
 
 function isSameDay(a, b) {
   return differenceInCalendarDays(a, b) === 0;
@@ -24,7 +24,8 @@ const CalendarItem = () => {
   const masters = useSelector((state) => state.calendar.masters);
   const time = useSelector((state) => state.calendar.time);
   const selectedMaster = useSelector((state) => state.calendar.selectedMaster);
-  const selectedTime = useSelector((state) => state.calendar.selectedTime)
+  const selectedTime = useSelector((state) => state.calendar.selectedTime);
+  const goToReservation = useSelector((state)=> state.calendar.goToReservation)
 
   const highlightedDates = appointments.map((item) => new Date(item.time));
 
@@ -110,14 +111,18 @@ const CalendarItem = () => {
           {time.map((item) => (
             <li
               className={
-                selectedTime === item
+                selectedTime === item.time
                   ? style["changeTime"] && style["red"]
                   : style["changeTime"]}
-              onClick={() => dispatch(getSelectedTime({ value: item }))}>
-              {item}
+              onClick={() => {dispatch(getSelectedTime({ time: item.time, id: item.id }))
+              dispatch(buttonResrvation())}}>
+              {item.time}
             </li>
           ))}
         </ul>
+        {
+          goToReservation === true ? <button onClick={()=> dispatch(onClickToReservation())} className={style.goToReservation}>Записаться</button> : ''
+        }
       </> : ""}
     </div>
   </div>

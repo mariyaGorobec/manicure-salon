@@ -1,24 +1,25 @@
 import React from "react";
 import axios from "axios";
-import { useDispatch} from "react-redux";
+import { useDispatch, useSelector} from "react-redux";
 import CalendarItem from "../../components/Calendar/CalendarItem";
 import { enroll } from "../../store/bodyColorAndMenu/bodyColorAndMenuSlice";
-import  {fetchContent}  from "../../store/Calendar/calendarSlice";
+import ReservationForm from "../../components/ReservationForm/ReservationForm";
 
 const Enroll = () => {
 
   const dispatch = useDispatch();
 
- 
     (() => {
       dispatch(enroll());
     })();
-
-
     
+    const isOnclickToReservation = useSelector((state) => state.calendar.isOnclickToReservation);
+
   return (
     <>
-      {<CalendarItem></CalendarItem>}
+     {
+      isOnclickToReservation ? <ReservationForm></ReservationForm> : <CalendarItem></CalendarItem>
+     }
     </>
   );
 };

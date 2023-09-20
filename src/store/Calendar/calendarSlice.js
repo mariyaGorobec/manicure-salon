@@ -8,7 +8,11 @@ const initialState = {
     allAppointmentsInTheDay: [],
     time: [],
     selectedMaster: {},
-    selectedTime: {}
+    selectedDay: {},
+    selectedTime: {},
+    idOfSelectedAppointments: {},
+    goToReservation: false,
+    isOnclickToReservation: false
 }
 
 
@@ -27,27 +31,46 @@ const calendarSlice = createSlice({
     initialState: initialState,
     reducers: {
         getMasters: (state, action) => {
-            const getAllAppointmentsInTheDay = state.appointments.filter(item => format(new Date(item.time), "yyyy.MM.dd") === format(new Date(action.payload.value), "yyyy.MM.dd"));
+            const day = format(new Date(action.payload.value), "dd.MM.yyyy");
+            state.selectedDay = day;
+            const getAllAppointmentsInTheDay = state.appointments.filter(item => format(new Date(item.time), "dd.MM.yyyy") === day);
             state.allAppointmentsInTheDay = getAllAppointmentsInTheDay;
             const masters = [...new Set(getAllAppointmentsInTheDay.map(item => item.master_name))];
             state.masters = masters;
         },
         getTime: (state, action) => {
-            const time = state.allAppointmentsInTheDay.filter(item => item.master_name === action.payload.value).map(item => format(new Date(item.time), "HH:mm"));
+            state.selectedTime = {};
+            
+            const time = state.allAppointmentsInTheDay.filter(item => item.master_name === action.payload.value).map(item=>{
+                const container = {
+                    id: item.id,
+                    time: format(new Date(item.time), "HH:mm")
+                }
+                return container;
+            })
+            //const time = state.allAppointmentsInTheDay.filter(item => item.master_name === action.payload.value).map(item =>  new Map([[item.id, format(new Date(item.time), "HH:mm")]]));
             state.time = time;
+            state.goToReservation = false;
         },
         resetData: state => {
             state.selectedMaster = {};
-            state.selectedTime = {};
-            state.masters = [];
+            state.time = [];
             state.allAppointmentsInTheDay = [];
-            state.time = []
+            state.masters = [];
+            state.goToReservation = false;
         },
         getSelectedMaster: (state, action) => {
             state.selectedMaster = action.payload.value;
         },
         getSelectedTime: (state,action)=>{
-            state.selectedTime = action.payload.value;
+            state.selectedTime = action.payload.time;
+            state.idOfSelectedAppointments = action.payload.id;
+        },
+        buttonResrvation: (state)=>{
+            state.goToReservation = true;
+        },
+        onClickToReservation: (state)=>{
+            state.isOnclickToReservation = true;
         }
     },
     extraReducers: (builder) => {
@@ -58,4 +81,4 @@ const calendarSlice = createSlice({
 })
 
 export default calendarSlice.reducer;
-export const { getMasters, getTime, resetData, getSelectedMaster, getSelectedTime } = calendarSlice.actions;
+export const { getMasters, getTime, resetData, getSelectedMaster, getSelectedTime, buttonResrvation, onClickToReservation } = calendarSlice.actions;
